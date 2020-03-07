@@ -35,7 +35,7 @@ implementation
 procedure TForm1.CalculationButtonClick(Sender: TObject);
 var
   TmpDay, InHour, InMin, InSec, InMultiple: Int64;
-  TmpHour, TmpMin, TmpSec,TmpSeveralTimes: Int64;
+  TmpHour, TmpMin, TmpSec: Int64;
   InSeveralTimes: Integer;
   StrHour: String;
   n: string;
