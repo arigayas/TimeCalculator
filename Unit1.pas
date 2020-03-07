@@ -1,4 +1,4 @@
-unit Unit1;
+ï»¿unit Unit1;
 
 interface
 
@@ -20,9 +20,9 @@ type
     procedure ResetButtonClick(Sender: TObject);
     procedure CalculationButtonClick(Sender: TObject);
   private
-    { Private éŒ¾ }
+    { Private å®£è¨€ }
   public
-    { Public éŒ¾ }
+    { Public å®£è¨€ }
   end;
 
 var
@@ -40,7 +40,7 @@ var
   StrHour: String;
   n: string;
 begin
-// -- ‘ã“ü•”----------------------------------
+// -- ä»£å…¥éƒ¨----------------------------------
   if HourLabeledEdit.Text = '' then
   begin
     InHour := 0;
@@ -68,7 +68,7 @@ begin
     InSec := StrToInt(SecondLabeledEdit.Text);
   end;
 
-  if MultipleLabelEdit.Text = '' then // ˜b”—“
+  if MultipleLabelEdit.Text = '' then // è©±æ•°æ¬„
   begin
     InMultiple := 1;
   end
@@ -76,10 +76,10 @@ begin
   begin
     InMultiple := StrToInt(MultipleLabelEdit.Text);
   end;
-// -- ‘ã“ü•”I‚í‚è----------------------------
+// -- ä»£å…¥éƒ¨çµ‚ã‚ã‚Š----------------------------
 
 
-// -- ŒvŽZ•”----------------------------------
+// -- è¨ˆç®—éƒ¨----------------------------------
   TmpMin := InHour * 60 + InMin;
   TmpSec := TmpMin * 60 + InSec;
   TmpSec := TmpSec * InMultiple;
@@ -94,22 +94,22 @@ begin
   TmpHour := TmpSec div 3600;
   TmpMin := (TmpSec - (TmpHour * 3600)) div 60;
   TmpSec := (TmpSec - (TmpHour * 3600)) mod 60;
-// -- ŒvŽZ•”I‚í‚è----------------------------
+// -- è¨ˆç®—éƒ¨çµ‚ã‚ã‚Š----------------------------
 
 
-// -- o—Í•”----------------------------------
+// -- å‡ºåŠ›éƒ¨----------------------------------
   if TmpHour > 24 then
     begin
       TmpDay := TmpHour div 24;
       TmpHour := (TmpHour - (TmpDay * 24)) mod 24;
-      StrHour := IntToStr(TmpDay) + '“ú' + IntToStr(TmpHour) + 'ŽžŠÔ';
+      StrHour := IntToStr(TmpDay) + 'æ—¥' + IntToStr(TmpHour) + 'æ™‚é–“';
     end
   else
     begin
-      StrHour := IntToStr(TmpHour) + 'ŽžŠÔ';
+      StrHour := IntToStr(TmpHour) + 'æ™‚é–“';
     end;
 
-  AnswerLabel.Caption := StrHour + IntToStr(TmpMin) + '•ª' + IntToStr(TmpSec) + '•b';
+  AnswerLabel.Caption := StrHour + IntToStr(TmpMin) + 'åˆ†' + IntToStr(TmpSec) + 'ç§’';
 end;
 
 
@@ -119,7 +119,7 @@ begin
   MinuteLabeledEdit.Text := '';
   SecondLabeledEdit.Text := '';
   MultipleLabelEdit.Text := '';
-  AnswerLabel.Caption := '0ŽžŠÔ0•ª0•b';
+  AnswerLabel.Caption := '0æ™‚é–“0åˆ†0ç§’';
   SeveralTimesComboBox.ItemIndex := -1;
   MinuteLabeledEdit.SetFocus;
 end;
