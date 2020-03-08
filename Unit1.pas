@@ -41,9 +41,9 @@ end;
 
 procedure TForm1.CalculationButtonClick(Sender: TObject);
 var
-  TmpDay, InHour, InMin, InSec, InMultiple: Int64;
-  TmpHour, TmpMin, TmpSec: Int64;
-  InSeveralTimes: Integer;
+  TmpDay, InHour, InMin, InSec, InMultiple: UInt64;
+  TmpHour, TmpMin, TmpSec: UInt64;
+  InSeveralTimes: UInt32;
   StrHour: String;
   n: string;
 begin
