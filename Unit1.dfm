@@ -24,7 +24,7 @@ object Form1: TForm1
   TextHeight = 13
   object SeveralTimesLabel: TLabel
     Left = 161
-    Top = 77
+    Top = 76
     Width = 32
     Height = 18
     Caption = #20493#36895
@@ -53,10 +53,9 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    OnMouseEnter = AnswerLabelMouseEnter
   end
   object ResetButton: TButton
-    Left = 8
+    Left = 13
     Top = 133
     Width = 89
     Height = 30
@@ -75,6 +74,7 @@ object Form1: TForm1
     Top = 21
     Width = 60
     Height = 27
+    Hint = '9'#26689#12414#12391#12391#12377
     Alignment = taRightJustify
     EditLabel.Width = 24
     EditLabel.Height = 13
@@ -85,16 +85,20 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ImeMode = imDisable
+    MaxLength = 9
     NumbersOnly = True
     ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
     TextHint = '0'
   end
   object MinuteLabeledEdit: TLabeledEdit
     Left = 79
     Top = 21
-    Width = 50
+    Width = 60
     Height = 27
+    Hint = '9'#26689#12414#12391#12391#12377
     Alignment = taRightJustify
     EditLabel.Width = 12
     EditLabel.Height = 13
@@ -105,16 +109,20 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ImeMode = imDisable
+    MaxLength = 9
     NumbersOnly = True
     ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
     TextHint = '0'
   end
   object SecondLabeledEdit: TLabeledEdit
-    Left = 135
+    Left = 144
     Top = 21
-    Width = 58
+    Width = 60
     Height = 27
+    Hint = '9'#26689#12414#12391#12391#12377
     Alignment = taRightJustify
     EditLabel.Width = 12
     EditLabel.Height = 13
@@ -125,14 +133,17 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ImeMode = imDisable
+    MaxLength = 9
     NumbersOnly = True
     ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
     TextHint = '0'
   end
   object CalculationButton: TButton
-    Left = 114
-    Top = 133
+    Left = 122
+    Top = 132
     Width = 82
     Height = 30
     Caption = #35336#31639
@@ -168,9 +179,10 @@ object Form1: TForm1
   end
   object MultipleLabelEdit: TLabeledEdit
     Left = 13
-    Top = 69
+    Top = 73
     Width = 60
     Height = 27
+    Hint = '9'#26689#12414#12391#12391#12377
     Alignment = taRightJustify
     EditLabel.Width = 48
     EditLabel.Height = 13
@@ -181,8 +193,11 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ImeMode = imDisable
+    MaxLength = 9
     NumbersOnly = True
     ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
     TextHint = '0'
   end

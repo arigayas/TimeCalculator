@@ -19,7 +19,6 @@ type
     MultipleLabelEdit: TLabeledEdit;
     procedure ResetButtonClick(Sender: TObject);
     procedure CalculationButtonClick(Sender: TObject);
-    procedure AnswerLabelMouseEnter(Sender: TObject);
   private
     { Private 宣言 }
   public
@@ -32,12 +31,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TForm1.AnswerLabelMouseEnter(Sender: TObject);
-begin
-  AnswerLabel.ShowHint := True;
-  AnswerLabel.Hint := AnswerLabel.Caption;
-end;
 
 procedure TForm1.CalculationButtonClick(Sender: TObject);
 var
