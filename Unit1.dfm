@@ -84,6 +84,7 @@ object Form1: TForm1
     Font.Height = -16
     Font.Name = 'Tahoma'
     Font.Style = []
+    ImeMode = imDisable
     NumbersOnly = True
     ParentFont = False
     TabOrder = 0
@@ -103,6 +104,7 @@ object Form1: TForm1
     Font.Height = -16
     Font.Name = 'Tahoma'
     Font.Style = []
+    ImeMode = imDisable
     NumbersOnly = True
     ParentFont = False
     TabOrder = 1
@@ -122,6 +124,7 @@ object Form1: TForm1
     Font.Height = -16
     Font.Name = 'Tahoma'
     Font.Style = []
+    ImeMode = imDisable
     NumbersOnly = True
     ParentFont = False
     TabOrder = 2
@@ -148,6 +151,7 @@ object Form1: TForm1
     Width = 55
     Height = 21
     Style = csDropDownList
+    ImeMode = imDisable
     TabOrder = 3
     Items.Strings = (
       '0.25'
@@ -176,6 +180,7 @@ object Form1: TForm1
     Font.Height = -16
     Font.Name = 'Tahoma'
     Font.Style = []
+    ImeMode = imDisable
     NumbersOnly = True
     ParentFont = False
     TabOrder = 6
