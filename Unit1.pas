@@ -98,7 +98,13 @@ begin
 
 
 // -- 出力部----------------------------------
-  if TmpHour > 24 then
+  if TmpHour = 0 then
+  begin
+    StrHour := '';
+  end
+  else
+  begin
+    if TmpHour > 24 then
     begin
       TmpDay := TmpHour div 24;
       TmpHour := (TmpHour - (TmpDay * 24)) mod 24;
@@ -108,7 +114,7 @@ begin
     begin
       StrHour := IntToStr(TmpHour) + '時間';
     end;
-
+  end;
   AnswerLabel.Caption := StrHour + IntToStr(TmpMin) + '分' + IntToStr(TmpSec) + '秒';
 end;
 
