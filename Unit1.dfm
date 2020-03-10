@@ -67,7 +67,7 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 6
     OnClick = ResetButtonClick
   end
   object HourLabeledEdit: TLabeledEdit
@@ -157,7 +157,7 @@ object Form1: TForm1
     Font.Name = 'UD '#12487#12472#12479#12523' '#25945#31185#26360#20307' NK-B'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
     OnClick = CalculationButtonClick
   end
   object SeveralTimesComboBox: TComboBox
@@ -167,7 +167,7 @@ object Form1: TForm1
     Height = 21
     Style = csDropDownList
     ImeMode = imDisable
-    TabOrder = 3
+    TabOrder = 4
     Items.Strings = (
       '0.25'
       '0.5'
@@ -202,7 +202,7 @@ object Form1: TForm1
     ParentFont = False
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 6
+    TabOrder = 3
     TextHint = '0'
     OnChange = TLabelEditChange
   end
