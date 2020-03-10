@@ -20,6 +20,9 @@ type
     procedure ResetButtonClick(Sender: TObject);
     procedure CalculationButtonClick(Sender: TObject);
     procedure AnswerLabelMouseEnter(Sender: TObject);
+    procedure MinuteLabeledEditChange(Sender: TObject);
+    procedure MultipleLabelEditChange(Sender: TObject);
+    procedure TLabelEditChange(Sender: TObject);
   private
     { Private 宣言 }
   public
@@ -138,6 +141,35 @@ begin
 end;
 
 
+procedure TForm1.MinuteLabeledEditChange(Sender: TObject);
+begin
+  if MinuteLabeledEdit.GetTextLen > MinuteLabeledEdit.MaxLength - 1 then
+    begin
+      MinuteLabeledEdit.Color := clYellow;
+      Form1.Caption := '倍速時間計算機 - 入力は'+ MinuteLabeledEdit.MaxLength.ToString +'桁まで';
+    end
+  else
+  begin
+    MinuteLabeledEdit.Color := clWindow;
+    Form1.Caption := '倍速時間計算機';
+  end;
+end;
+
+procedure TForm1.MultipleLabelEditChange(Sender: TObject);
+begin
+  if MultipleLabelEdit.GetTextLen > MultipleLabelEdit.MaxLength - 1 then
+  begin
+    MultipleLabelEdit.Color := clYellow;
+    Form1.Caption := '倍速時間計算機 - 入力は'+ MinuteLabeledEdit.MaxLength.ToString +'桁まで';
+  end
+  else
+  begin
+    MultipleLabelEdit.Color := clWindow;
+    Form1.Caption := '倍速時間計算機';
+  end;
+end;
+
+
 procedure TForm1.ResetButtonClick(Sender: TObject);
 begin
   HourLabeledEdit.Text := '';
@@ -147,6 +179,23 @@ begin
   AnswerLabel.Caption := '0時間0分0秒';
   SeveralTimesComboBox.ItemIndex := -1;
   MinuteLabeledEdit.SetFocus;
+end;
+
+procedure TForm1.TLabelEditChange(Sender: TObject);
+begin
+  if Sender is TLabeledEdit then
+  begin  // 9文字入力すると色とウィンドウタイトルが変化する
+      if TLabeledEdit(Sender).GetTextLen > TLabeledEdit(Sender).MaxLength - 1 then
+      begin
+        TLabeledEdit(Sender).Color := clYellow;
+        Form1.Caption := '倍速時間計算機 - 入力は'+ TLabeledEdit(Sender).MaxLength.ToString +'桁まで';
+      end
+      else
+      begin
+        TLabeledEdit(Sender).Color := clWindow;
+        Form1.Caption := '倍速時間計算機';
+      end;
+  end;
 end;
 
 end.

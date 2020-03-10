@@ -93,6 +93,7 @@ object Form1: TForm1
     ShowHint = True
     TabOrder = 0
     TextHint = '0'
+    OnChange = TLabelEditChange
   end
   object MinuteLabeledEdit: TLabeledEdit
     Left = 79
@@ -117,6 +118,7 @@ object Form1: TForm1
     ShowHint = True
     TabOrder = 1
     TextHint = '0'
+    OnChange = TLabelEditChange
   end
   object SecondLabeledEdit: TLabeledEdit
     Left = 144
@@ -141,6 +143,7 @@ object Form1: TForm1
     ShowHint = True
     TabOrder = 2
     TextHint = '0'
+    OnChange = TLabelEditChange
   end
   object CalculationButton: TButton
     Left = 122
@@ -201,5 +204,6 @@ object Form1: TForm1
     ShowHint = True
     TabOrder = 6
     TextHint = '0'
+    OnChange = TLabelEditChange
   end
 end
