@@ -32,12 +32,14 @@ implementation
 
 {$R *.dfm}
 
+
+
 procedure TForm1.CalculationButtonClick(Sender: TObject);
 var
   TmpDay, InHour, InMin, InSec, InMultiple: UInt64;
   TmpHour, TmpMin, TmpSec: UInt64;
   InSeveralTimes: UInt32;
-  StrHour: String;
+  StrHour, StrMin: String;
   n: string;
 begin
 // -- 代入部----------------------------------
@@ -115,7 +117,17 @@ begin
       StrHour := IntToStr(TmpHour) + '時間';
     end;
   end;
-  AnswerLabel.Caption := StrHour + IntToStr(TmpMin) + '分' + IntToStr(TmpSec) + '秒';
+
+  if (TmpHour = 0) and (TmpMin = 0)then
+  begin
+    StrMin := '';
+  end
+  else
+  begin
+    StrMin := IntToStr(TmpMin) + '分';
+  end;
+
+  AnswerLabel.Caption := StrHour + StrMin + IntToStr(TmpSec) + '秒';
 end;
 
 
