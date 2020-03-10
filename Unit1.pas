@@ -19,6 +19,7 @@ type
     MultipleLabelEdit: TLabeledEdit;
     procedure ResetButtonClick(Sender: TObject);
     procedure CalculationButtonClick(Sender: TObject);
+    procedure AnswerLabelMouseEnter(Sender: TObject);
   private
     { Private 宣言 }
   public
@@ -33,6 +34,12 @@ implementation
 {$R *.dfm}
 
 
+// マウスカーソルをラベル上に乗せたらAnswerLabel.Captionの値を表示する
+procedure TForm1.AnswerLabelMouseEnter(Sender: TObject);
+begin
+  AnswerLabel.ShowHint := True;
+  AnswerLabel.Hint := AnswerLabel.Caption;
+end;
 
 procedure TForm1.CalculationButtonClick(Sender: TObject);
 var

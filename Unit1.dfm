@@ -53,6 +53,7 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    OnMouseEnter = AnswerLabelMouseEnter
   end
   object ResetButton: TButton
     Left = 13
