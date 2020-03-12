@@ -33,6 +33,13 @@ var
 
 implementation
 
+resourcestring
+  Str_Days = '日';
+  Str_Hour = '時間';
+  Str_Min = '分';
+  Str_Sec = '秒';
+  Str_AppName = '倍速時間計算機';
+
 {$R *.dfm}
 
 
@@ -119,11 +126,11 @@ begin
     begin
       TmpDay := TmpHour div 24;
       TmpHour := (TmpHour - (TmpDay * 24)) mod 24;
-      StrHour := IntToStr(TmpDay) + '日' + IntToStr(TmpHour) + '時間';
+      StrHour := IntToStr(TmpDay) + Str_Days + IntToStr(TmpHour) + Str_Hour;
     end
   else
     begin
-      StrHour := IntToStr(TmpHour) + '時間';
+      StrHour := IntToStr(TmpHour) + Str_Hour;
     end;
   end;
 
@@ -133,10 +140,10 @@ begin
   end
   else
   begin
-    StrMin := IntToStr(TmpMin) + '分';
+    StrMin := IntToStr(TmpMin) + Str_Min;
   end;
 
-  AnswerLabel.Caption := StrHour + StrMin + IntToStr(TmpSec) + '秒';
+  AnswerLabel.Caption := StrHour + StrMin + IntToStr(TmpSec) + Str_Sec;
 end;
 
 
@@ -152,7 +159,7 @@ begin
   MinuteLabeledEdit.Text := '';
   SecondLabeledEdit.Text := '';
   MultipleLabelEdit.Text := '';
-  AnswerLabel.Caption := '0時間0分0秒';
+  AnswerLabel.Caption := '0' + Str_Hour + '0' + Str_Min + '0' + Str_Sec;
   SeveralTimesComboBox.ItemIndex := -1;
   MinuteLabeledEdit.SetFocus;
 end;
@@ -164,12 +171,12 @@ begin
       if TLabeledEdit(Sender).GetTextLen > TLabeledEdit(Sender).MaxLength - 1 then
       begin
         TLabeledEdit(Sender).Color := clYellow;
-        Form1.Caption := '倍速時間計算機 - 入力は'+ TLabeledEdit(Sender).MaxLength.ToString +'桁まで';
+        Form1.Caption := Str_AppName +' - 入力は'+ TLabeledEdit(Sender).MaxLength.ToString +'桁まで';
       end
       else
       begin
         TLabeledEdit(Sender).Color := clWindow;
-        Form1.Caption := '倍速時間計算機';
+        Form1.Caption := Str_AppName;
       end;
   end;
 end;
