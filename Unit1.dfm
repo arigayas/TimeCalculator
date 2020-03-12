@@ -17,6 +17,7 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnKeyDown = FormKeyDown
   DesignSize = (
     214
     171)
@@ -94,6 +95,7 @@ object Form1: TForm1
     TabOrder = 0
     TextHint = '0'
     OnChange = TLabelEditChange
+    OnKeyDown = FormKeyDown
   end
   object MinuteLabeledEdit: TLabeledEdit
     Left = 79
@@ -119,6 +121,7 @@ object Form1: TForm1
     TabOrder = 1
     TextHint = '0'
     OnChange = TLabelEditChange
+    OnKeyDown = FormKeyDown
   end
   object SecondLabeledEdit: TLabeledEdit
     Left = 144
@@ -144,6 +147,7 @@ object Form1: TForm1
     TabOrder = 2
     TextHint = '0'
     OnChange = TLabelEditChange
+    OnKeyDown = FormKeyDown
   end
   object CalculationButton: TButton
     Left = 122
@@ -168,6 +172,7 @@ object Form1: TForm1
     Style = csDropDownList
     ImeMode = imDisable
     TabOrder = 4
+    OnKeyDown = FormKeyDown
     Items.Strings = (
       '0.25'
       '0.5'
@@ -205,5 +210,6 @@ object Form1: TForm1
     TabOrder = 3
     TextHint = '0'
     OnChange = TLabelEditChange
+    OnKeyDown = FormKeyDown
   end
 end

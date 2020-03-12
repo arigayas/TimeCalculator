@@ -23,6 +23,7 @@ type
     procedure MinuteLabeledEditChange(Sender: TObject);
     procedure MultipleLabelEditChange(Sender: TObject);
     procedure TLabelEditChange(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private 宣言 }
   public
@@ -140,6 +141,12 @@ begin
   AnswerLabel.Caption := StrHour + StrMin + IntToStr(TmpSec) + '秒';
 end;
 
+
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  if (Key = VK_RETURN) then
+    CalculationButtonClick(Sender);
+end;
 
 procedure TForm1.MinuteLabeledEditChange(Sender: TObject);
 begin
