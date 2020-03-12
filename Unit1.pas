@@ -20,8 +20,6 @@ type
     procedure ResetButtonClick(Sender: TObject);
     procedure CalculationButtonClick(Sender: TObject);
     procedure AnswerLabelMouseEnter(Sender: TObject);
-    procedure MinuteLabeledEditChange(Sender: TObject);
-    procedure MultipleLabelEditChange(Sender: TObject);
     procedure TLabelEditChange(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
@@ -147,35 +145,6 @@ begin
   if (Key = VK_RETURN) then
     CalculationButtonClick(Sender);
 end;
-
-procedure TForm1.MinuteLabeledEditChange(Sender: TObject);
-begin
-  if MinuteLabeledEdit.GetTextLen > MinuteLabeledEdit.MaxLength - 1 then
-    begin
-      MinuteLabeledEdit.Color := clYellow;
-      Form1.Caption := '倍速時間計算機 - 入力は'+ MinuteLabeledEdit.MaxLength.ToString +'桁まで';
-    end
-  else
-  begin
-    MinuteLabeledEdit.Color := clWindow;
-    Form1.Caption := '倍速時間計算機';
-  end;
-end;
-
-procedure TForm1.MultipleLabelEditChange(Sender: TObject);
-begin
-  if MultipleLabelEdit.GetTextLen > MultipleLabelEdit.MaxLength - 1 then
-  begin
-    MultipleLabelEdit.Color := clYellow;
-    Form1.Caption := '倍速時間計算機 - 入力は'+ MinuteLabeledEdit.MaxLength.ToString +'桁まで';
-  end
-  else
-  begin
-    MultipleLabelEdit.Color := clWindow;
-    Form1.Caption := '倍速時間計算機';
-  end;
-end;
-
 
 procedure TForm1.ResetButtonClick(Sender: TObject);
 begin
