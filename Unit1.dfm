@@ -17,6 +17,7 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   DesignSize = (
     214

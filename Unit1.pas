@@ -22,6 +22,7 @@ type
     procedure AnswerLabelMouseEnter(Sender: TObject);
     procedure TLabelEditChange(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
   private
     { Private 宣言 }
   public
@@ -147,6 +148,13 @@ begin
   AnswerLabelMouseEnter(Sender);
 end;
 
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  {$IFDEF DEBUG}
+    Color := clOlive;
+  {$ENDIF}
+end;
 
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
