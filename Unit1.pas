@@ -144,6 +144,7 @@ begin
   end;
 
   AnswerLabel.Caption := StrHour + StrMin + IntToStr(TmpSec) + Str_Sec;
+  AnswerLabelMouseEnter(Sender);
 end;
 
 
