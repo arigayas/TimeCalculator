@@ -122,7 +122,7 @@ begin
   end
   else
   begin
-    if TmpHour > 24 then
+    if TmpHour > 23 then
     begin
       TmpDay := TmpHour div 24;
       TmpHour := (TmpHour - (TmpDay * 24)) mod 24;
