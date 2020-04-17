@@ -1,7 +1,8 @@
 # TimeCalculator
 時間計算機 for Windows
 
-![スクリーンショット](https://github.com/arigayas/TimeCalculator/blob/master/ScreenShot/ScreenShot_04.png)
+![スクリーンショット](https://github.com/arigayas/TimeCalculator/blob/master/ScreenShot/ScreenShot_05.png)
+![スクリーンショット](https://github.com/arigayas/TimeCalculator/blob/master/ScreenShot/ScreenShot_02.png)
 
 このソフトは動画サイトなどで再生速度が変えられるのが普通になったので、  
 例えば、43分54秒の動画を任意の速度で再生した場合に
