@@ -154,6 +154,7 @@ begin
   {$IFDEF DEBUG}
     Color := clOlive;
   {$ENDIF}
+  SeveralTimesComboBox.ItemIndex := 4;  // 1.0 倍速を選択した状態で起動する
 end;
 
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
