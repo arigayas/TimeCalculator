@@ -19,8 +19,7 @@ object Form1: TForm1
   Position = poMainFormCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
-  OnMouseWheelDown = FormMouseWheelDown
-  OnMouseWheelUp = FormMouseWheelUp
+  OnMouseWheel = FormMouseWheel
   DesignSize = (
     214
     171)

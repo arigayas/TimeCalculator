@@ -23,12 +23,10 @@ type
     procedure TLabelEditChange(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
-    procedure FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
-      MousePos: TPoint; var Handled: Boolean);
     function NumValUp(NumVal:string):string;
-    procedure FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
-      MousePos: TPoint; var Handled: Boolean);
     function NumValDown(NumVal:string):string;
+    procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
   private
     { Private 宣言 }
   public
@@ -169,52 +167,13 @@ begin
     CalculationButtonClick(Sender);
 end;
 
-procedure TForm1.FormMouseWheelDown(Sender: TObject; Shift: TShiftState;
-  MousePos: TPoint; var Handled: Boolean);
+procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
 var
   NumVal: string;
 begin
-  if HourLabeledEdit.Focused then
-    begin
-      NumVal := HourLabeledEdit.Text;
-      HourLabeledEdit.Text := NumValDown(NumVal);
-    end;
-
-  if MinuteLabeledEdit.Focused then
-    begin
-      NumVal := MinuteLabeledEdit.Text;
-      MinuteLabeledEdit.Text := NumValDown(NumVal);
-    end;
-
-  if SecondLabeledEdit.Focused then
-    begin
-      NumVal := SecondLabeledEdit.Text;
-      SecondLabeledEdit.Text := NumValDown(NumVal);
-    end;
-
-end;
-
-function TForm1.NumValDown(NumVal:string):string;
-var
-  num:Integer;
-begin
-  if NumVal ='' then
-    Num := 0
-  else
-    Num := NumVal.ToInteger;
-
-  if Num > 0 then
-    begin
-      dec(Num);
-      Result := Num.ToString;
-    end;
-end;
-
-procedure TForm1.FormMouseWheelUp(Sender: TObject; Shift: TShiftState;
-  MousePos: TPoint; var Handled: Boolean);
-var
-  NumVal: string;
-begin
+  if WheelDelta > 0 then
+  begin
   if HourLabeledEdit.Focused then
     begin
       NumVal := HourLabeledEdit.Text;
@@ -232,6 +191,58 @@ begin
       NumVal := SecondLabeledEdit.Text;
       SecondLabeledEdit.Text := NumValUp(NumVal);
     end;
+
+  if MultipleLabelEdit.Focused then
+    begin
+      NumVal := MultipleLabelEdit.Text;
+      MultipleLabelEdit.Text := NumValUp(NumVal);
+    end;
+  end
+  else
+  begin
+    if HourLabeledEdit.Focused then
+    begin
+      NumVal := HourLabeledEdit.Text;
+      HourLabeledEdit.Text := NumValDown(NumVal);
+    end;
+
+  if MinuteLabeledEdit.Focused then
+    begin
+      NumVal := MinuteLabeledEdit.Text;
+      MinuteLabeledEdit.Text := NumValDown(NumVal);
+    end;
+
+  if SecondLabeledEdit.Focused then
+    begin
+      NumVal := SecondLabeledEdit.Text;
+      SecondLabeledEdit.Text := NumValDown(NumVal);
+    end;
+
+  if MultipleLabelEdit.Focused then
+    begin
+      NumVal := MultipleLabelEdit.Text;
+      MultipleLabelEdit.Text := NumValDown(NumVal);
+    end;
+  end;
+end;
+
+
+function TForm1.NumValDown(NumVal:string):string;
+var
+  num:Integer;
+begin
+  if NumVal ='' then
+    Num := 0
+  else
+    Num := NumVal.ToInteger;
+
+  if Num > 0 then
+    begin
+      dec(Num);
+      Result := Num.ToString;
+    end
+   else
+     Result := '0';
 end;
 
 function TForm1.NumValUp(NumVal:string):string;
