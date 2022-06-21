@@ -269,7 +269,7 @@ begin
   SecondLabeledEdit.Text := '';
   MultipleLabelEdit.Text := '';
   AnswerLabel.Caption := '0' + Str_Hour + '0' + Str_Min + '0' + Str_Sec;
-  SeveralTimesComboBox.ItemIndex := -1;
+  SeveralTimesComboBox.ItemIndex := 4;
   MinuteLabeledEdit.SetFocus;
 end;
 
