@@ -172,6 +172,7 @@ procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
 var
   NumVal: string;
 begin
+  Handled:= True; // このイベントが複数回呼ばれなくなるために必要
   if WheelDelta > 0 then
   begin
   if HourLabeledEdit.Focused then
@@ -254,7 +255,7 @@ begin
   else
     Num := NumVal.ToInteger;
 
-  if Num < 99999 then
+  if Num < 999999999 then
     begin
       Inc(Num);
       Result := Num.ToString;
