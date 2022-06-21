@@ -240,6 +240,8 @@ begin
   if Num > 0 then
     begin
       dec(Num);
+      if (GetKeyState( VK_SHIFT ) < 0) and (num > 3) then
+        num := num - 4 ;
       Result := Num.ToString;
     end
    else
@@ -258,6 +260,8 @@ begin
   if Num < 999999999 then
     begin
       Inc(Num);
+      if GetKeyState( VK_SHIFT ) < 0 then // Shiftキー押下時5倍で増える
+        num := num + 4 ;
       Result := Num.ToString;
     end;
 end;
