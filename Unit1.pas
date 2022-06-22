@@ -28,6 +28,8 @@ type
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
     function BlankCheck(Val:string): Integer;
+    procedure NumericalValueUp(Sender: TObject);
+    procedure NumericalValueDown(Sender: TObject);
   private
     { Private 宣言 }
   public
@@ -148,58 +150,10 @@ begin
     CalculationButtonClick(Sender);
 
   if (Key = VK_UP) then
-    begin
-      if HourLabeledEdit.Focused then
-        begin
-          NumVal := HourLabeledEdit.Text;
-          HourLabeledEdit.Text := NumValUp(NumVal);
-        end;
-
-      if MinuteLabeledEdit.Focused then
-        begin
-          NumVal := MinuteLabeledEdit.Text;
-          MinuteLabeledEdit.Text := NumValUp(NumVal);
-        end;
-
-      if SecondLabeledEdit.Focused then
-        begin
-          NumVal := SecondLabeledEdit.Text;
-          SecondLabeledEdit.Text := NumValUp(NumVal);
-        end;
-
-      if MultipleLabelEdit.Focused then
-        begin
-          NumVal := MultipleLabelEdit.Text;
-          MultipleLabelEdit.Text := NumValUp(NumVal);
-        end;
-    end;
+    NumericalValueUp(Sender);
 
   if (Key = VK_DOWN) then
-    begin
-      if HourLabeledEdit.Focused then
-        begin
-          NumVal := HourLabeledEdit.Text;
-          HourLabeledEdit.Text := NumValDown(NumVal);
-        end;
-
-      if MinuteLabeledEdit.Focused then
-        begin
-          NumVal := MinuteLabeledEdit.Text;
-          MinuteLabeledEdit.Text := NumValDown(NumVal);
-        end;
-
-      if SecondLabeledEdit.Focused then
-        begin
-          NumVal := SecondLabeledEdit.Text;
-          SecondLabeledEdit.Text := NumValDown(NumVal);
-        end;
-
-      if MultipleLabelEdit.Focused then
-        begin
-          NumVal := MultipleLabelEdit.Text;
-          MultipleLabelEdit.Text := NumValDown(NumVal);
-        end;
-    end;
+    NumericalValueDown(Sender);
 
 end;
 
@@ -210,32 +164,16 @@ var
 begin
   Handled := True; // このイベントが複数回呼ばれなくなるために必要
   if WheelDelta > 0 then
-  begin
-  if HourLabeledEdit.Focused then
-    begin
-      NumVal := HourLabeledEdit.Text;
-      HourLabeledEdit.Text := NumValUp(NumVal);
-    end;
-
-  if MinuteLabeledEdit.Focused then
-    begin
-      NumVal := MinuteLabeledEdit.Text;
-      MinuteLabeledEdit.Text := NumValUp(NumVal);
-    end;
-
-  if SecondLabeledEdit.Focused then
-    begin
-      NumVal := SecondLabeledEdit.Text;
-      SecondLabeledEdit.Text := NumValUp(NumVal);
-    end;
-
-  if MultipleLabelEdit.Focused then
-    begin
-      NumVal := MultipleLabelEdit.Text;
-      MultipleLabelEdit.Text := NumValUp(NumVal);
-    end;
-  end
+    NumericalValueUp(Sender)
   else
+    NumericalValueDown(Sender);
+end;
+
+
+procedure TForm1.NumericalValueDown(Sender: TObject);
+var
+  NumVal: string;
+begin
   begin
     if HourLabeledEdit.Focused then
     begin
@@ -263,6 +201,34 @@ begin
   end;
 end;
 
+procedure TForm1.NumericalValueUp(Sender: TObject);
+var
+  NumVal: string;
+begin
+if HourLabeledEdit.Focused then
+    begin
+      NumVal := HourLabeledEdit.Text;
+      HourLabeledEdit.Text := NumValUp(NumVal);
+    end;
+
+  if MinuteLabeledEdit.Focused then
+    begin
+      NumVal := MinuteLabeledEdit.Text;
+      MinuteLabeledEdit.Text := NumValUp(NumVal);
+    end;
+
+  if SecondLabeledEdit.Focused then
+    begin
+      NumVal := SecondLabeledEdit.Text;
+      SecondLabeledEdit.Text := NumValUp(NumVal);
+    end;
+
+  if MultipleLabelEdit.Focused then
+    begin
+      NumVal := MultipleLabelEdit.Text;
+      MultipleLabelEdit.Text := NumValUp(NumVal);
+    end;
+end;
 
 function TForm1.NumValDown(NumVal:string):string;
 var
