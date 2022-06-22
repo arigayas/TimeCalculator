@@ -137,12 +137,70 @@ begin
     Color := clOlive;
   {$ENDIF}
   SeveralTimesComboBox.ItemIndex := 4;  // 1.0 倍速を選択した状態で起動する
+  ActiveControl := MinuteLabeledEdit;   // 分欄にカーソルがある状態で起動する
 end;
 
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+var
+  NumVal: string;
 begin
   if (Key = VK_RETURN) then
     CalculationButtonClick(Sender);
+
+  if (Key = VK_UP) then
+    begin
+      if HourLabeledEdit.Focused then
+        begin
+          NumVal := HourLabeledEdit.Text;
+          HourLabeledEdit.Text := NumValUp(NumVal);
+        end;
+
+      if MinuteLabeledEdit.Focused then
+        begin
+          NumVal := MinuteLabeledEdit.Text;
+          MinuteLabeledEdit.Text := NumValUp(NumVal);
+        end;
+
+      if SecondLabeledEdit.Focused then
+        begin
+          NumVal := SecondLabeledEdit.Text;
+          SecondLabeledEdit.Text := NumValUp(NumVal);
+        end;
+
+      if MultipleLabelEdit.Focused then
+        begin
+          NumVal := MultipleLabelEdit.Text;
+          MultipleLabelEdit.Text := NumValUp(NumVal);
+        end;
+    end;
+
+  if (Key = VK_DOWN) then
+    begin
+      if HourLabeledEdit.Focused then
+        begin
+          NumVal := HourLabeledEdit.Text;
+          HourLabeledEdit.Text := NumValDown(NumVal);
+        end;
+
+      if MinuteLabeledEdit.Focused then
+        begin
+          NumVal := MinuteLabeledEdit.Text;
+          MinuteLabeledEdit.Text := NumValDown(NumVal);
+        end;
+
+      if SecondLabeledEdit.Focused then
+        begin
+          NumVal := SecondLabeledEdit.Text;
+          SecondLabeledEdit.Text := NumValDown(NumVal);
+        end;
+
+      if MultipleLabelEdit.Focused then
+        begin
+          NumVal := MultipleLabelEdit.Text;
+          MultipleLabelEdit.Text := NumValDown(NumVal);
+        end;
+    end;
+
 end;
 
 procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
@@ -150,7 +208,7 @@ procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
 var
   NumVal: string;
 begin
-  Handled:= True; // このイベントが複数回呼ばれなくなるために必要
+  Handled := True; // このイベントが複数回呼ばれなくなるために必要
   if WheelDelta > 0 then
   begin
   if HourLabeledEdit.Focused then
