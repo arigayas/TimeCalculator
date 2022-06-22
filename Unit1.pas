@@ -215,7 +215,7 @@ begin
   if Num > 0 then
     begin
       dec(Num);
-      if (GetKeyState( VK_SHIFT ) < 0) and (num > 3) then
+      if (GetKeyState( VK_SHIFT ) < 0) and (num > 3) then // Shiftキー押下時-5で減るが4未満の時は1ずつ減る
         num := num - 4 ;
       Result := Num.ToString;
     end
@@ -232,7 +232,7 @@ begin
   if Num < 999999999 then
     begin
       Inc(Num);
-      if GetKeyState( VK_SHIFT ) < 0 then // Shiftキー押下時5倍で増える
+      if GetKeyState( VK_SHIFT ) < 0 then // Shiftキー押下時+5で増える
         num := num + 4 ;
       Result := Num.ToString;
     end;
