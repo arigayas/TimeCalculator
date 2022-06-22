@@ -27,6 +27,7 @@ type
     function NumValDown(NumVal:string):string;
     procedure FormMouseWheel(Sender: TObject; Shift: TShiftState;
       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+    function BlankCheck(Val:string): Integer;
   private
     { Private 宣言 }
   public
@@ -64,32 +65,9 @@ var
   n: string;
 begin
 // -- 代入部----------------------------------
-  if HourLabeledEdit.Text = '' then
-  begin
-    InHour := 0;
-  end
-  else
-  begin
-    InHour := StrToInt(HourLabeledEdit.Text);
-  end;
-
-  if MinuteLabeledEdit.Text = '' then
-  begin
-    InMin := 0;
-  end
-  else
-  begin
-    InMin := StrToInt(MinuteLabeledEdit.Text);
-  end;
-
-  if SecondLabeledEdit.Text = '' then
-  begin
-    InSec := 0;
-  end
-  else
-  begin
-    InSec := StrToInt(SecondLabeledEdit.Text);
-  end;
+  InHour := BlankCheck(HourLabeledEdit.Text);
+  InMin := BlankCheck(MinuteLabeledEdit.Text);
+  InSec := BlankCheck(SecondLabeledEdit.Text);
 
   if MultipleLabelEdit.Text = '' then // 話数欄
   begin
@@ -232,10 +210,7 @@ function TForm1.NumValDown(NumVal:string):string;
 var
   num:Integer;
 begin
-  if NumVal ='' then
-    Num := 0
-  else
-    Num := NumVal.ToInteger;
+  num := BlankCheck(NumVal);
 
   if Num > 0 then
     begin
@@ -252,10 +227,7 @@ function TForm1.NumValUp(NumVal:string):string;
 var
   num:Integer;
 begin
-  if NumVal ='' then
-    Num := 0
-  else
-    Num := NumVal.ToInteger;
+  num := BlankCheck(NumVal);
 
   if Num < 999999999 then
     begin
@@ -264,6 +236,14 @@ begin
         num := num + 4 ;
       Result := Num.ToString;
     end;
+end;
+
+function TForm1.BlankCheck(Val:string): Integer;
+begin
+  if Val = '' then
+    Result := 0
+  else
+    Result := Val.ToInteger;
 end;
 
 procedure TForm1.ResetButtonClick(Sender: TObject);
