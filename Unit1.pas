@@ -235,7 +235,8 @@ begin
   if Num > 0 then
     begin
       dec(Num);
-      if (GetKeyState( VK_SHIFT ) < 0) and (num > 3) then // Shiftキー押下時-5で減るが4未満の時は1ずつ減る
+       // Shift or Control キー押下時-5で減らすが4未満の時は1ずつ減らす
+      if ((GetKeyState( VK_SHIFT ) < 0) or (GetKeyState( VK_CONTROL ) < 0)) and (num > 3) then
         num := num - 4 ;
       Result := Num.ToString;
     end
@@ -252,7 +253,8 @@ begin
   if Num < 999999999 then
     begin
       Inc(Num);
-      if GetKeyState( VK_SHIFT ) < 0 then // Shiftキー押下時+5で増える
+      // Shift or Control キー押下時+5で増やす
+      if (GetKeyState( VK_SHIFT ) < 0) or (GetKeyState( VK_CONTROL ) < 0) then
         num := num + 4 ;
       Result := Num.ToString;
     end;
@@ -281,7 +283,7 @@ procedure TForm1.TLabelEditChange(Sender: TObject);
 begin
   if Sender is TLabeledEdit then
   begin
-    // 7文字入力するとヒントを表示する
+    // 7文字入力するとヒントに入力値を表示する
     if TLabeledEdit(Sender).GetTextLen > 6 then
       begin
         TLabeledEdit(Sender).hint := TLabeledEdit(Sender).text;
