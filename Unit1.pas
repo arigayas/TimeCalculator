@@ -280,7 +280,18 @@ end;
 procedure TForm1.TLabelEditChange(Sender: TObject);
 begin
   if Sender is TLabeledEdit then
-  begin  // 9文字入力すると色とウィンドウタイトルが変化する
+  begin
+    // 7文字入力するとヒントを表示する
+    if TLabeledEdit(Sender).GetTextLen > 6 then
+      begin
+        TLabeledEdit(Sender).hint := TLabeledEdit(Sender).text;
+      end
+    else
+      begin
+        TLabeledEdit(Sender).hint := TLabeledEdit(Sender).MaxLength.ToString +'桁までです';
+      end;
+
+    // 9文字入力すると色とウィンドウタイトルが変化する
     if TLabeledEdit(Sender).GetTextLen > TLabeledEdit(Sender).MaxLength - 1 then
       begin
         TLabeledEdit(Sender).Color := clYellow;
