@@ -143,8 +143,6 @@ begin
 end;
 
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-var
-  NumVal: string;
 begin
   if (Key = VK_RETURN) then
     CalculationButtonClick(Sender);
@@ -159,8 +157,6 @@ end;
 
 procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
   WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
-var
-  NumVal: string;
 begin
   Handled := True; // このイベントが複数回呼ばれなくなるために必要
   if WheelDelta > 0 then
@@ -296,8 +292,8 @@ begin
         Form1.Caption := Str_AppName;
       end;
 
-    // 入力欄の下一桁にカーソルを維持する
-    TLabeledEdit(Sender).SelStart := Length(TLabeledEdit(Sender).Text);
+    // 入力欄のカーソルを一番右に維持する
+    TLabeledEdit(Sender).SelStart := Length(TLabeledEdit(Sender).Text) + 1;
   end;
 end;
 
