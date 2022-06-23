@@ -285,16 +285,19 @@ procedure TForm1.TLabelEditChange(Sender: TObject);
 begin
   if Sender is TLabeledEdit then
   begin  // 9文字入力すると色とウィンドウタイトルが変化する
-      if TLabeledEdit(Sender).GetTextLen > TLabeledEdit(Sender).MaxLength - 1 then
+    if TLabeledEdit(Sender).GetTextLen > TLabeledEdit(Sender).MaxLength - 1 then
       begin
         TLabeledEdit(Sender).Color := clYellow;
         Form1.Caption := Str_AppName +' - 入力は'+ TLabeledEdit(Sender).MaxLength.ToString +'桁まで';
       end
-      else
+    else
       begin
         TLabeledEdit(Sender).Color := clWindow;
         Form1.Caption := Str_AppName;
       end;
+
+    // 入力欄の下一桁にカーソルを維持する
+    TLabeledEdit(Sender).SelStart := Length(TLabeledEdit(Sender).Text);
   end;
 end;
 
