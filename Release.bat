@@ -1,4 +1,5 @@
 @echo off
+rem 使い方：Release.bat [バージョン数字]
 if not exist Win32\Release\TimeCalculator.exe (
     echo 32.txt  is Not Found.
 ) else (
