@@ -159,10 +159,17 @@ procedure TForm1.FormMouseWheel(Sender: TObject; Shift: TShiftState;
   WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
 begin
   Handled := True; // このイベントが複数回呼ばれなくなるために必要
+
+  if HourLabeledEdit.Focused   then Sender := HourLabeledEdit;
+  if MinuteLabeledEdit.Focused then Sender := MinuteLabeledEdit;
+  if SecondLabeledEdit.Focused then Sender := SecondLabeledEdit;
+  if MultipleLabelEdit.Focused then Sender := MultipleLabelEdit;
+
   if WheelDelta > 0 then
     NumericalValueUp(Sender)
   else
     NumericalValueDown(Sender);
+
 end;
 
 
@@ -201,29 +208,14 @@ procedure TForm1.NumericalValueUp(Sender: TObject);
 var
   NumVal: string;
 begin
-if HourLabeledEdit.Focused then
+  if Sender is TLabeledEdit then
+  begin
+    if TLabeledEdit(Sender).Focused then
     begin
-      NumVal := HourLabeledEdit.Text;
-      HourLabeledEdit.Text := NumValUp(NumVal);
+      NumVal := TLabeledEdit(Sender).Text;
+      TLabeledEdit(Sender).text := NumValUp(NumVal);
     end;
-
-  if MinuteLabeledEdit.Focused then
-    begin
-      NumVal := MinuteLabeledEdit.Text;
-      MinuteLabeledEdit.Text := NumValUp(NumVal);
-    end;
-
-  if SecondLabeledEdit.Focused then
-    begin
-      NumVal := SecondLabeledEdit.Text;
-      SecondLabeledEdit.Text := NumValUp(NumVal);
-    end;
-
-  if MultipleLabelEdit.Focused then
-    begin
-      NumVal := MultipleLabelEdit.Text;
-      MultipleLabelEdit.Text := NumValUp(NumVal);
-    end;
+  end;
 end;
 
 function TForm1.NumValDown(NumVal:string):string;
