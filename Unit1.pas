@@ -177,29 +177,12 @@ procedure TForm1.NumericalValueDown(Sender: TObject);
 var
   NumVal: string;
 begin
+  if Sender is TLabeledEdit then
   begin
-    if HourLabeledEdit.Focused then
+    if TLabeledEdit(Sender).Focused then
     begin
-      NumVal := HourLabeledEdit.Text;
-      HourLabeledEdit.Text := NumValDown(NumVal);
-    end;
-
-  if MinuteLabeledEdit.Focused then
-    begin
-      NumVal := MinuteLabeledEdit.Text;
-      MinuteLabeledEdit.Text := NumValDown(NumVal);
-    end;
-
-  if SecondLabeledEdit.Focused then
-    begin
-      NumVal := SecondLabeledEdit.Text;
-      SecondLabeledEdit.Text := NumValDown(NumVal);
-    end;
-
-  if MultipleLabelEdit.Focused then
-    begin
-      NumVal := MultipleLabelEdit.Text;
-      MultipleLabelEdit.Text := NumValDown(NumVal);
+      NumVal := TLabeledEdit(Sender).Text;
+      TLabeledEdit(Sender).text := NumValDown(NumVal);
     end;
   end;
 end;
