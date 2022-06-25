@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  RegularExpressions;
 
 type
   TForm1 = class(TForm)
@@ -236,6 +237,12 @@ begin
 end;
 
 function TForm1.BlankCheck(Val:string): Integer;
+const
+  Dis = $FEE0;
+var
+  Str   : String;
+  i     : Integer;
+  AChar : Cardinal;
 begin
   if Val = '' then
     Result := 0
@@ -255,9 +262,33 @@ begin
 end;
 
 procedure TForm1.TLabelEditChange(Sender: TObject);
+const
+  Dis = $FEE0;
+var
+  Str   : String;
+  i     : Integer;
+  AChar : Cardinal;
 begin
   if Sender is TLabeledEdit then
   begin
+    // 全角数字を半角数字にする
+    if TRegEx.IsMatch(TLabeledEdit(Sender).Text, '[０-９]+') then
+    begin
+      Str := '';
+      for i := 1 to Length(TLabeledEdit(Sender).Text) do
+        begin
+          AChar := Ord(TLabeledEdit(Sender).Text[i]);
+          if (AChar >= $FF10) and (AChar <= $FF5A) then
+            begin
+            Str := Str + Chr(AChar - Dis);
+            end
+          else
+            Str := Str + TLabeledEdit(Sender).Text[i];
+        end;
+      TLabeledEdit(Sender).Text := Str;
+    end;
+
+
     // 7文字入力するとヒントに入力値を表示する
     if TLabeledEdit(Sender).GetTextLen > 6 then
       begin
