@@ -31,6 +31,8 @@ type
     function BlankCheck(Val:string): Integer;
     procedure NumericalValueUp(Sender: TObject);
     procedure NumericalValueDown(Sender: TObject);
+    procedure HourLabeledEditKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private 宣言 }
   public
@@ -173,6 +175,14 @@ begin
 
 end;
 
+procedure TForm1.HourLabeledEditKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (key = VK_UP) then
+  begin
+    TLabeledEdit(Sender).SelStart := TLabeledEdit(Sender).MaxLength + 1;
+  end;
+end;
 
 procedure TForm1.NumericalValueDown(Sender: TObject);
 var
@@ -198,6 +208,7 @@ begin
     begin
       NumVal := TLabeledEdit(Sender).Text;
       TLabeledEdit(Sender).text := NumValUp(NumVal);
+      TLabeledEdit(Sender).SelStart := TLabeledEdit(Sender).MaxLength + 1;
     end;
   end;
 end;
@@ -305,7 +316,7 @@ begin
       end;
 
     // 入力欄のカーソルを一番右に維持する
-    TLabeledEdit(Sender).SelStart := Length(TLabeledEdit(Sender).Text) + 1;
+    TLabeledEdit(Sender).SelStart := TLabeledEdit(Sender).MaxLength + 1;
   end;
 end;
 

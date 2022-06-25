@@ -98,6 +98,7 @@ object Form1: TForm1
     TextHint = '0'
     OnChange = TLabelEditChange
     OnKeyDown = FormKeyDown
+    OnKeyUp = HourLabeledEditKeyUp
   end
   object MinuteLabeledEdit: TLabeledEdit
     Left = 79
@@ -124,6 +125,7 @@ object Form1: TForm1
     TextHint = '0'
     OnChange = TLabelEditChange
     OnKeyDown = FormKeyDown
+    OnKeyUp = HourLabeledEditKeyUp
   end
   object SecondLabeledEdit: TLabeledEdit
     Left = 144
@@ -150,6 +152,7 @@ object Form1: TForm1
     TextHint = '0'
     OnChange = TLabelEditChange
     OnKeyDown = FormKeyDown
+    OnKeyUp = HourLabeledEditKeyUp
   end
   object CalculationButton: TButton
     Left = 122
@@ -213,5 +216,6 @@ object Form1: TForm1
     TextHint = '0'
     OnChange = TLabelEditChange
     OnKeyDown = FormKeyDown
+    OnKeyUp = HourLabeledEditKeyUp
   end
 end
