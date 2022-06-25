@@ -31,8 +31,7 @@ type
     function BlankCheck(Val:string): Integer;
     procedure NumericalValueUp(Sender: TObject);
     procedure NumericalValueDown(Sender: TObject);
-    procedure HourLabeledEditKeyUp(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure HourLabeledEditKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private 宣言 }
   public
@@ -74,9 +73,10 @@ begin
   InMin := BlankCheck(MinuteLabeledEdit.Text);
   InSec := BlankCheck(SecondLabeledEdit.Text);
 
-  if MultipleLabelEdit.Text = '' then // 話数欄
+  if (MultipleLabelEdit.Text = '') OR (MultipleLabelEdit.Text = '0') then // 話数欄
   begin
     InMultiple := 1;
+    MultipleLabelEdit.Text := '1';
   end
   else
   begin
@@ -208,7 +208,6 @@ begin
     begin
       NumVal := TLabeledEdit(Sender).Text;
       TLabeledEdit(Sender).text := NumValUp(NumVal);
-      TLabeledEdit(Sender).SelStart := TLabeledEdit(Sender).MaxLength + 1;
     end;
   end;
 end;

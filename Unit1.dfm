@@ -192,7 +192,7 @@ object Form1: TForm1
       '2.0')
   end
   object MultipleLabelEdit: TLabeledEdit
-    Left = 13
+    Left = 8
     Top = 73
     Width = 60
     Height = 27
