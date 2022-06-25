@@ -237,12 +237,6 @@ begin
 end;
 
 function TForm1.BlankCheck(Val:string): Integer;
-const
-  Dis = $FEE0;
-var
-  Str   : String;
-  i     : Integer;
-  AChar : Cardinal;
 begin
   if Val = '' then
     Result := 0
@@ -287,7 +281,6 @@ begin
         end;
       TLabeledEdit(Sender).Text := Str;
     end;
-
 
     // 7文字入力するとヒントに入力値を表示する
     if TLabeledEdit(Sender).GetTextLen > 6 then
